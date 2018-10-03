@@ -1,0 +1,49 @@
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+
+*.[oa]
+*.o.cmd
+*.ko.cmd
+*.pyc
+*~
+*.out
+build/
+install/
+.xxx
+.cproject
+.settings/
+.project
+.pydevproject
+tags
+
+# Added by fberger
+*.log
+*.bak
+/.metadata/
+/bin/
+.tags*
+
+gxa/tools/gui/Makefile
+gxa/tools/gui/moc_*.cpp
+gxa/tools/gui/ui_*.h
+gxa/tools/gui/gxagui
+
+#pbeck
+.kdev4/
+git-pdk-sw.kdev4
+
+# Added by syouness
+uncrustify.conf
+.preferences.xml
+
+#auto generated java sources
+GMAC/java/celoxica/gmac/v3/*.java
+GMAC/java/celoxica/gmac/v3/*.class
+GMAC/java/src/v3/*.c
+GMAC/java/src/v3/*.h
+
+#pycparser tables
+GMAC/java/lextab.py
+GMAC/java/yacctab.py
