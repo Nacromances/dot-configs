@@ -1,5 +1,6 @@
 " General
 set nu
+set relativenumber
 colorscheme desert
 
 
@@ -113,6 +114,22 @@ let g:airline_powerline_fonts=1
 " clang-format.py need to be in your PYTHONPATH
 map <C-K> :pyf clang-format.py<cr>
 imap <C-K> <c-o>:pyf clang-format.py<cr>
+
+" load custom .vim.custom if found
+au BufNewFile,BufRead *.h call CheckForCustomConfiguration()
+au BufNewFile,BufRead *.c call CheckForCustomConfiguration()
+function! CheckForCustomConfiguration()
+    " Check for .vim.custom in the directory containing the newly opened file
+    let custom_config_file = expand('%:p:h') . '/.vim.custom'
+    if filereadable(custom_config_file)
+        exe 'source' custom_config_file
+    endif
+endfunction
+
+
+
+
+
 
 " W for save with sudo
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
