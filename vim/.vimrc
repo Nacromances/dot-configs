@@ -127,10 +127,9 @@ function! CheckForCustomConfiguration()
     endif
 endfunction
 
-
-
-
-
+if v:version < 740 || !(has('python'))
+    let g:enable_ycm_at_startup = 0
+endif
 
 " W for save with sudo
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
