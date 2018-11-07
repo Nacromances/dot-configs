@@ -5,6 +5,8 @@ BACKUP_DIR="back_up"
 pushd
 cd ${HOME}
 git clone https://github.com/Bash-it/bash-it.git .bash_it
+~/.bash_it/install.sh --silent --no-modify-config
+
 mkdir ${BACKUP_DIR}
 if [ -f .bashrc ];
 then
