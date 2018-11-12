@@ -29,6 +29,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'valloric/youcompleteme'
+Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 
 call vundle#end()            " required
