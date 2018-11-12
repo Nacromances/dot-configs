@@ -69,9 +69,33 @@ let g:gundo_prefer_python3=1
 
 " Tab settings
 set smartindent
+" Kernel development"
+function KernelMode()
+let g:ycm_filetype_blacklist = {
+    \ 'c' : 1,
+    \ 'c++' : 1
+    \ }
+set tabstop=8
+set softtabstop=8
+set shiftwidth=8
+set noexpandtab
+endfunction
+
+
+" User land development"
+function UserMode()
+let g:ycm_filetype_whitelist = {
+    \ 'c' : 1,
+    \ 'c++' : 1
+    \ }
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
+endfunction
+
+call UserMode()
+
 " Other options
 "
 set incsearch
@@ -130,6 +154,8 @@ endfunction
 if v:version < 740 || !(has('python'))
     let g:enable_ycm_at_startup = 0
 endif
+
+
 
 " W for save with sudo
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
