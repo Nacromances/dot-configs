@@ -9,6 +9,7 @@ export BASH_IT=$HOME/.bash_it
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
+export SCM_GIT_SHOW_REMOTE_INFO=false
 export POWERLINE_PROMPT="last_status user_info hostname cwd scm"
 export BASH_IT_THEME='powerline'
 
