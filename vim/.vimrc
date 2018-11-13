@@ -28,7 +28,7 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'vimjas/vim-python-pep8-indent'
 Plugin 'valloric/youcompleteme'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -102,6 +102,7 @@ set incsearch
 set hlsearch
 set wildmenu
 set hidden
+set smartindent
 set autoindent
 set noswapfile
 set wildignore=*.o,*~,*.pyc,build/*
