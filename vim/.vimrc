@@ -28,7 +28,8 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'vimjas/vim-python-pep8-indent'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
 Plugin 'valloric/youcompleteme'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -60,7 +61,7 @@ nnoremap <F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<C
 
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <C-S-x> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-nnoremap <F8> :TagbarToggle<CR> 
+nnoremap <F8> :TagbarToggle<CR>
 
 
 " Gundo
@@ -98,22 +99,33 @@ call UserMode()
 
 " Other options
 "
+let mapleader = ","
 set incsearch
 set hlsearch
 set wildmenu
 set hidden
-set smartindent
-set autoindent
 set noswapfile
 set wildignore=*.o,*~,*.pyc,build/*
 set mouse=a
-let mapleader = ","
+set foldmethod=indent
+set foldlevel=99
+set colorcolumn=120
+nnoremap <space> za
+" Whitespace managment
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+
+"
 
 " Minibufexplorer
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1 
+let g:miniBufExplModSelTarget = 1
 
 
 " CtrlP
@@ -127,7 +139,7 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 " airline
-set t_Co=256 
+set t_Co=256
 let g:airline_theme = 'bubblegum'
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
@@ -156,7 +168,9 @@ if v:version < 740 || !(has('python'))
     let g:enable_ycm_at_startup = 0
 endif
 
-
+" Python
+" Folding
+let g:SimpylFold_docstring_preview=1
 
 " W for save with sudo
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
