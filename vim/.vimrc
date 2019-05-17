@@ -174,3 +174,9 @@ let g:SimpylFold_docstring_preview=1
 
 " W for save with sudo
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
+" Buffer navigation
+"
+nnoremap <C-a> :bnext<CR>
+nnoremap <C-b> :bprevious<CR>
+nnoremap <C-X> :bd<CR>
