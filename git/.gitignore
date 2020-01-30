@@ -22,7 +22,6 @@ tags
 *.log
 *.bak
 /.metadata/
-/bin/
 .tags*
 
 gxa/tools/gui/Makefile
