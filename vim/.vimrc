@@ -91,7 +91,8 @@ endfunction
 function UserMode()
 let g:ycm_filetype_whitelist = {
     \ 'c' : 1,
-    \ 'c++' : 1
+    \ 'c++' : 1,
+    \ 'cpp' : 1
     \ }
 set tabstop=4
 set softtabstop=4
@@ -194,4 +195,4 @@ nnoremap <C-X> :bd<CR>
 
 let g:cmake_ycm_symlinks=1
 
-set makeprg=ninja\ -C\ build
+set makeprg=make\ -C\ build
