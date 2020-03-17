@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
 
-# Add rvm gems to the path
-export PATH=$PATH
+# Bash vim mode
+set -o vi
+
+# My compiled bins
+export PATH=$HOME/bin:$PATH
 
 # Path to the bash it configuration
 export BASH_IT=$HOME/.bash_it
@@ -17,8 +20,8 @@ export BASH_IT_THEME='powerline'
 export GIT_HOSTING='git@git.domain.com'
 
 # Set my editor and git editor
-export EDITOR="/usr/bin/vim"
-export GIT_EDITOR='/usr/bin/vim'
+export EDITOR="vim"
+export GIT_EDITOR='vim'
 
 
 # Don't check mail when opening terminal.
