@@ -2,7 +2,8 @@
 set nu
 set relativenumber
 colorscheme desert
-
+syntax on
+set autoindent
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -34,7 +35,9 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'valloric/youcompleteme'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'christoomey/vim-tmux-navigator'
-
+Plugin 'vhdirk/vim-cmake'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'jeaye/color_coded'
 call vundle#end()            " required
 set nocp
 filetype plugin on
@@ -165,9 +168,14 @@ function! CheckForCustomConfiguration()
     endif
 endfunction
 
+
+" YCM
 if v:version < 740 || !(has('python'))
     let g:enable_ycm_at_startup = 0
 endif
+let g:ycm_auto_trigger=1
+let g:ycm_collect_identifiers_from_tags_files=1
+
 
 " Python
 " Folding
@@ -181,3 +189,9 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 nnoremap <C-a> :bnext<CR>
 nnoremap <C-b> :bprevious<CR>
 nnoremap <C-X> :bd<CR>
+
+" CMake
+
+let g:cmake_ycm_symlinks=1
+
+set makeprg=ninja\ -C\ build
