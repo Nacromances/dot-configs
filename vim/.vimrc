@@ -37,7 +37,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'vhdirk/vim-cmake'
 Plugin 'rdnetto/YCM-Generator'
-Plugin 'jeaye/color_coded'
+Plugin 'rhysd/vim-clang-format'
 call vundle#end()            " required
 set nocp
 filetype plugin on
@@ -110,7 +110,7 @@ set hlsearch
 set wildmenu
 set hidden
 set noswapfile
-set wildignore=*.o,*~,*.pyc,build/*
+set wildignore=*.o,*~,*.pyc,build/*,**/build/*
 set mouse=a
 set foldmethod=indent
 set foldlevel=99
@@ -154,13 +154,12 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#csv#enabled = 1
 let g:airline_powerline_fonts=1
 
-" clang-format.py need to be in your PYTHONPATH
-map <C-K> :pyf clang-format.py<cr>
-imap <C-K> <c-o>:pyf clang-format.py<cr>
 
 " load custom .vim.custom if found
 au BufNewFile,BufRead *.h call CheckForCustomConfiguration()
 au BufNewFile,BufRead *.c call CheckForCustomConfiguration()
+au BufNewFile,BufRead *.hpp call CheckForCustomConfiguration()
+au BufNewFile,BufRead *.cpp call CheckForCustomConfiguration()
 function! CheckForCustomConfiguration()
     " Check for .vim.custom in the directory containing the newly opened file
     let custom_config_file = expand('%:p:h') . '/.vim.custom'
@@ -196,3 +195,16 @@ nnoremap <C-X> :bd<CR>
 let g:cmake_ycm_symlinks=1
 
 set makeprg=make\ -C\ build
+
+
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+set modelines=5
