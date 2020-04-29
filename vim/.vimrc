@@ -37,7 +37,8 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'vhdirk/vim-cmake'
 Plugin 'rdnetto/YCM-Generator'
-Plugin 'rhysd/vim-clang-format'
+Plugin 'rhysd/vim-clang-format'           " Call clang format
+Plugin 'octol/vim-cpp-enhanced-highlight' " CPP highlight
 call vundle#end()            " required
 set nocp
 filetype plugin on
@@ -94,10 +95,6 @@ let g:ycm_filetype_whitelist = {
     \ 'c++' : 1,
     \ 'cpp' : 1
     \ }
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
 endfunction
 
 call UserMode()
@@ -123,7 +120,10 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
 "
 
 " Minibufexplorer
@@ -175,6 +175,11 @@ if v:version < 740 || !(has('python'))
 endif
 let g:ycm_auto_trigger=1
 let g:ycm_collect_identifiers_from_tags_files=1
+nnoremap <silent> <Leader>gd : YcmCompleter GoToDefinition<CR>
+nnoremap <silent> <Leader>gi : YcmCompleter GoToInclude<CR>
+nnoremap <silent> <Leader>gD : YcmCompleter GoToDeclaration<CR>
+nnoremap <silent> <Leader>gr : YcmCompleter GoToReferences<CR>
+
 
 
 " Python
@@ -208,3 +213,16 @@ function! AppendModeline()
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 set modelines=5
+
+
+" CPP Highlites
+
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+
+
+" Trailing spaced
+"
+autocmd FileType c,cpp,python,sh,xml,json autocmd BufWritePre <buffer> %s/\s\+$//e
