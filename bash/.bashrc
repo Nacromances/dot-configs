@@ -1,4 +1,9 @@
-stty -ixon # Disable ctrl-s
+
+if [ $(tty -s) ]
+then
+    stty -ixon # Disable ctrl-s
+fi
+
 source ~/.bash_profile
 unset GREP_OPTIONS
 
