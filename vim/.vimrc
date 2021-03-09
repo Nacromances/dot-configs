@@ -35,13 +35,14 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'valloric/youcompleteme'
+" Plugin 'valloric/youcompleteme'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'vhdirk/vim-cmake'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'rhysd/vim-clang-format'           " Call clang format
 Plugin 'octol/vim-cpp-enhanced-highlight' " CPP highlight
+Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
 call vundle#end()            " required
 set nocp
 filetype plugin on
@@ -229,3 +230,5 @@ let g:cpp_posix_standard = 1
 " Trailing spaced
 "
 autocmd FileType c,cpp,python,sh,xml,json autocmd BufWritePre <buffer> %s/\s\+$//e
+
+
