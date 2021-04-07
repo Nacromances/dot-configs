@@ -1,7 +1,7 @@
 " General
 set nu
-set relativenumber
 colorscheme desert
+
 syntax on
 set autoindent
 
@@ -35,7 +35,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-" Plugin 'valloric/youcompleteme'
+Plugin 'valloric/youcompleteme'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'vhdirk/vim-cmake'
