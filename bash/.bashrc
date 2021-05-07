@@ -25,8 +25,16 @@ unset __conda_setup
 ## <<< conda initialize <<<
 }
 
-
+# Custom functions
 function disassmble {
     gdb $1 -ex 'set pagination off' -ex "disassemble /mr $2" -ex 'quit' | c++filt
 }
 
+# terminal title
+function set_title {
+    echo -ne "\033]0; $1 \007"
+}
+
+#useful aliases
+alias ll='ls -alh'
+alias lt='ls -alrt'
