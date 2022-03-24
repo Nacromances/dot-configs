@@ -38,3 +38,8 @@ function set_title {
 #useful aliases
 alias ll='ls -alh'
 alias lt='ls -alrt'
+
+function key_server {
+    eval $(ssh-agent -s)
+    ssh-add ~/.ssh/id_rsa
+}
